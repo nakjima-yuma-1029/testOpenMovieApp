@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>検索</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-searchbar [(ngModel)]="query"></ion-searchbar>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button class="bold" expand="block" fill="solid" color="primary" (click)="search()">
+          <ion-icon name="search" slot="start"></ion-icon>
+          検索
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col *ngIf="movies">
+        <ion-card *ngFor="let movie of movies">
+          <div class="ion-text-center">
+            <img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{movie.poster_path}}" />
+          </div>
+          <ion-card-header>
+            <ion-card-subtitle>{{ movie.release_date }}</ion-card-subtitle>
+            <ion-card-title>{{ movie.title }}</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            {{ movie.overview }}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button defaultHref="/search">検索</ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      おすすめ映画
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title>Now Movies</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card *ngFor="let movie of list" class="ion-padding-top">
+          <div class="ion-text-center">
+            <img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{movie.poster_path}}" />
+          </div>
+          <ion-card-header>
+            <ion-card-subtitle>{{ movie.release_date }}</ion-card-subtitle>
+            <ion-card-title>{{ movie.title }}</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            {{ movie.overview }}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid> 
+</ion-content>
